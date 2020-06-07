@@ -1,17 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+class SwapiService {
+  constructor() {
+    this._apiBase = `https://swapi.dev/api`;
+  }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  async getResource(url) {
+    const response = await fetch(`${this._apiBase}${url}`);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    if (!response.ok) {
+      throw new Error(`Could not fetch ${`${this._apiBase}${url}`}` + `recieved ${response.status}`)
+    }
+  
+    return await response.json();
+  }
+
+  async getAllPeople() {
+    const res = await this.getResource(`/people/`);
+    return res.results;
+  }
+  
+  getPerson(id) {
+    return this.getResource(`/people/${id}`);
+  }
+
+  async getAllPlanets() {
+    const res = await this.getResource(`/planets/`);
+    return res.results;
+  }
+  
+  getPlanet(id) {
+    return this.getResource(`/planets/${id}`);
+  }
+
+  async getAllStarships() {
+    const res = await this.getResource(`/starships/`);
+    return res.results;
+  }
+  
+  getStarship(id) {
+    return this.getResource(`/starships/${id}`);
+  }
+}
+
+const swapi = new SwapiService();
