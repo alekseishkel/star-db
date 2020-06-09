@@ -1,4 +1,4 @@
-class SwapiService {
+export default class SwapiService {
   constructor() {
     this._apiBase = `https://swapi.dev/api`;
   }
