@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import SwapiService from '../../services/swapi-service'
+import SwapiService from '../../services/swapi-service';
 import Loader from '../loader';
 import ErrorMessage from '../error';
 
-import './random-planet.css'
+import './random-planet.css';
 
 export default class RandomPlanet extends Component {
   constructor() {
@@ -19,6 +19,7 @@ export default class RandomPlanet extends Component {
     };
 
     this.updatePlanet();
+    setInterval(this.updatePlanet, 5000);
 
     this.onPlanetLoaded = (planet) => {
       this.setState({
@@ -32,10 +33,10 @@ export default class RandomPlanet extends Component {
         loading: false,
         error: true
       })
-    }
+    };
   };
 
-  updatePlanet() {
+  updatePlanet = () => {
     const id = Math.floor(Math.random() * 15) + 1;
 
     this.swapiService.getPlanet(id)
@@ -69,7 +70,7 @@ const PlanetView = ({planet}) => {
       <React.Fragment>
         <img className="planet-image"
           src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
-          alt="Some Planet"/>
+          alt="Planet Photo"/>
         <div>
           <h2>{name}</h2>
           <ul className="list-group list-group-flush">
@@ -88,5 +89,5 @@ const PlanetView = ({planet}) => {
           </ul>
         </div>
       </React.Fragment>
-    )
-}
+    );
+};
