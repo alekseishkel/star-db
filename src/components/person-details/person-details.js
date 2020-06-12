@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader';
 import ErrorMessage from '../error';
+import ErrorButton from '../error-button';
 
 import './person-details.css'
 
@@ -29,8 +30,8 @@ export default class PersonDetails extends Component {
         loading: true
       })
       this.updatePerson();
-    }
-  }
+    };
+  };
 
   updatePerson() {
     const { personId } = this.props;
@@ -47,7 +48,7 @@ export default class PersonDetails extends Component {
       .catch(() => this.setState({
         error: true
       }));
-  }
+  };
 
   render() {
     const { error, loading } = this.state;
@@ -92,6 +93,7 @@ const PersonView = ({ person}) => {
             <span>{eyeColor}</span>
           </li>
         </ul>
+      <ErrorButton />
       </div>
     </div>
   );
