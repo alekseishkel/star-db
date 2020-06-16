@@ -5,12 +5,17 @@ import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
+import ItemList from '../item-list';
+import PersonDetails from '../person-details';
+import SwapiService from '../../services/swapi-service';
 
-import './app.css'
+import './app.css';
 
 export default class App extends Component {
   constructor() {
     super();
+
+    this.swapiService = new SwapiService();
 
     this.state = {
       showRandomPlanet: true,
@@ -28,7 +33,7 @@ export default class App extends Component {
   };
 
   componentDidCatch() {
-    this.setState({hasError: true});
+    this.setState({ hasError: true });
   };
 
   render() {
@@ -39,7 +44,7 @@ export default class App extends Component {
     const { showRandomPlanet } = this.state;
 
     const planet = showRandomPlanet ? <RandomPlanet /> : null;
-
+    console.log(this.swapiService.getAllPlanets)
     return (
 
       <div className='star-db'>
@@ -49,16 +54,37 @@ export default class App extends Component {
         <div className="row mb2 button-row">
           <button
             className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet}>
+            onClick={this.toggleRandomPlanet} >
             Toggle Random Planet
             </button>
-            <ErrorButton />
+          <ErrorButton />
         </div>
 
         <PeoplePage />
-        <PeoplePage />
-        <PeoplePage />
-        
+
+        {/* <section className="row mb2">
+          <div className="col-md-6">
+            <ItemList 
+              onPersonClick={this.onPersonClick} 
+              getData={this.swapiService.getAllPlanets}
+            />
+          </div>
+          <div className="col-md-6">
+            <PersonDetails personId={this.state.selectedPerson} />
+          </div>
+        </section>
+
+        <section className="row mb2">
+          <div className="col-md-6">
+            <ItemList onPersonClick={this.onPersonClick} />
+          </div>
+          <div className="col-md-6">
+            <PersonDetails 
+              personId={this.state.selectedPerson} 
+              getData={this.swapiService.getAllStarships}
+            />
+          </div>
+        </section> */}
       </div>
     )
   }

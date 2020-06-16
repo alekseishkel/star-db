@@ -74,7 +74,7 @@ const PlanetView = ({planet}) => {
       <React.Fragment>
         <img className="planet-image"
           src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
-          alt="This Planet"/>
+          alt="That Planet"/>
         <div>
           <h2>{name}</h2>
           <ul className="list-group list-group-flush">
