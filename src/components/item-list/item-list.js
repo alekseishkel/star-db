@@ -11,24 +11,27 @@ export default class ItemList extends Component {
 
     this.state = {
       error: false,
-      itemList: null
+      itemsList: null
     };
 
-    this.renderItems = (item) => {
-      return item.map(({ id, name }) => (
-        <li
-          className="list-group-item"
-          key={id}
-          onClick={() => this.props.onPersonClick(id)}>
-          {name}
-        </li>
-      ));
+    this.renderItems = (items) => {
+      return items.map(({id, name}) => {
+        return (
+          <li
+            className="list-group-item"
+            key={id}
+            onClick={() => this.props.onPersonClick(id)}>
+            {name}
+          </li>
+        )
+      });
+
     };
   };
 
+
   componentDidMount() {
-    const {getData} = this.props;
-    console.log(getData)
+    const { getData } = this.props;
 
     getData()
       .then((itemsList) => this.setState({

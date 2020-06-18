@@ -16,13 +16,13 @@ export default class App extends Component {
     super();
 
     this.swapiService = new SwapiService();
-
+    
     this.state = {
       showRandomPlanet: true,
       selectedPerson: 1,
       hasError: false
     };
-
+    
     this.toggleRandomPlanet = () => {
       this.setState((state) => {
         return {
@@ -31,22 +31,21 @@ export default class App extends Component {
       });
     };
   };
-
+  
   componentDidCatch() {
     this.setState({ hasError: true });
   };
-
+  
   render() {
     if (this.state.hasError) {
       return <ErrorMessage />
     }
-
+    
     const { showRandomPlanet } = this.state;
-
+    
     const planet = showRandomPlanet ? <RandomPlanet /> : null;
-    console.log(this.swapiService.getAllPlanets)
     return (
-
+      
       <div className='star-db'>
         <Header />
         {planet}
@@ -62,7 +61,7 @@ export default class App extends Component {
 
         <PeoplePage />
 
-        {/* <section className="row mb2">
+        <section className="row mb2">
           <div className="col-md-6">
             <ItemList 
               onPersonClick={this.onPersonClick} 
@@ -70,21 +69,21 @@ export default class App extends Component {
             />
           </div>
           <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
+            {/* <PersonDetails personId={this.state.selectedPerson} /> */}
           </div>
         </section>
 
         <section className="row mb2">
           <div className="col-md-6">
-            <ItemList onPersonClick={this.onPersonClick} />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails 
-              personId={this.state.selectedPerson} 
-              getData={this.swapiService.getAllStarships}
+            <ItemList 
+            onPersonClick={this.onPersonClick}
+            getData={this.swapiService.getAllStarships}
             />
           </div>
-        </section> */}
+          <div className="col-md-6">
+            {/* <PersonDetails personId={this.state.selectedPerson} /> */}
+          </div>
+        </section>
       </div>
     )
   }

@@ -69,9 +69,10 @@ export default class PersonDetails extends Component {
   };
 };
 
-const PersonView = ({ person}) => {
+const PersonView = ({person}) => {
   const { id, name, gender, birthYear, eyeColor } = person;
-
+const imgId = id;
+console.log(`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`);
   return (
     <div className="person-details card">
       <img className="person-image"
