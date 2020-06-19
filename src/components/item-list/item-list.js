@@ -15,13 +15,15 @@ export default class ItemList extends Component {
     };
 
     this.renderItems = (items) => {
-      return items.map(({id, name}) => {
+      return items.map((item) => {
+        const {id} = item;
+        const label = this.props.renderItem(item);
+
         return (
-          <li
-            className="list-group-item"
-            key={id}
-            onClick={() => this.props.onPersonClick(id)}>
-            {name}
+          <li className="list-group-item"
+              key={id}
+              onClick={() => this.props.onPersonClick(id)}>
+            {label}
           </li>
         )
       });

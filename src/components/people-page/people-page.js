@@ -39,7 +39,8 @@ export default class PeoplePalge extends Component {
         <div className="col-md-6">
           <ItemList 
             onPersonClick={this.onPersonClick} 
-            getData={this.swapiService.getAllPeople}/>
+            getData={this.swapiService.getAllPeople} 
+            renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`} />
         </div>
         <div className="col-md-6">
           <PersonDetails personId={this.state.selectedPerson} />
