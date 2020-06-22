@@ -5,42 +5,42 @@ import Loader from '../loader';
 import ErrorMessage from '../error';
 import ErrorButton from '../error-button';
 
-import './person-details.css'
+import './item-details.css'
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
   constructor() {
     super();
 
     this.swapiService = new SwapiService();
 
     this.state = {
-      person: null,
+      item: null,
       error: false,
       loading: true
     };
   };
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) {
+    if (this.props.itemId !== prevProps.itemId) {
       this.setState({
         loading: true
       })
-      this.updatePerson();
+      this.updateItem();
     };
   };
 
-  updatePerson() {
-    const { personId } = this.props;
+  updateItem() {
+    const { itemId } = this.props;
 
-    if (!personId) {
+    if (!itemId) {
       return;
     }
 
-    this.swapiService.getPerson(personId)
+    this.swapiService.getPerson(itemId)
       .then((person) => this.setState({
         person,
         loading: false

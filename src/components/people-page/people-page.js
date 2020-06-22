@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import Row from '../row';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
 
 import './people-page.css';
 
-export default class PeoplePalge extends Component {
+export default class PeoplePage extends Component {
   constructor() {
     super();
 
@@ -37,13 +37,13 @@ export default class PeoplePalge extends Component {
       </ItemList>
     );
 
-    const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
+    const itemDetails = (
+      <ItemDetails itemId={this.state.selectedPerson} />
     );
 
     return (
       <ErrorBoundry>
-        <Row left={itemList} right={personDetails} />
+        <Row left={itemList} right={itemDetails} />
       </ErrorBoundry>
     )
   };

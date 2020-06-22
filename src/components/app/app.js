@@ -6,7 +6,7 @@ import PeoplePage from '../people-page';
 import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import PersonDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 
 import './app.css';
