@@ -5,8 +5,9 @@ import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
-import ItemList from '../item-list';
-import PersonDetails from '../item-details';
+import ItemDetails from '../item-details/';
+import { ItemField } from '../item-details/item-details';
+import Row from '../row';
 import SwapiService from '../../services/swapi-service';
 
 import './app.css';
@@ -42,11 +43,37 @@ export default class App extends Component {
     }
 
     const { showRandomPlanet } = this.state;
+    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
 
     const planet = showRandomPlanet ? <RandomPlanet /> : null;
 
+    const personDetails = (
+      <ItemDetails
+        itemId={11}
+        getData={getPerson}
+        getImageUrl={getPersonImage}>
+
+        <ItemField field="gender" label="Gender" />
+        <ItemField field="eyeColor" label="Eye Color" />
+
+      </ItemDetails>
+    )
+
+    const starshipDetails = (
+      <ItemDetails
+        itemId={5}
+        getData={getStarship}
+        getImageUrl={getStarshipImage}>
+
+        <ItemField field="model" label="Model" />
+        <ItemField field="length" label="Length" />
+        <ItemField field="costInCredits" label="Cost" />
+
+      </ItemDetails>
+    )
+
     return (
-      <div className='star-db'>
+      <div className="star-db">
         <Header />
         {planet}
 
@@ -59,7 +86,9 @@ export default class App extends Component {
           <ErrorButton />
         </div>
 
-        <PeoplePage />
+        {/* <PeoplePage /> */}
+
+        <Row left={personDetails} right={starshipDetails} />
 
       </div>
     )
