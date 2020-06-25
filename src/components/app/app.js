@@ -86,7 +86,7 @@ export default class App extends Component {
           <ErrorButton />
         </div>
 
-        {/* <PeoplePage /> */}
+        <PeoplePage />
 
         <Row left={personDetails} right={starshipDetails} />
 
