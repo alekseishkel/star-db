@@ -1,3 +1,3 @@
-import hasData from './has-data';
+import withData from './with-data';
 
-export default hasData;
+export default withData;

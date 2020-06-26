@@ -8,11 +8,11 @@ import ErrorMessage from '../error';
 import Row from '../row';
 import SwapiService from '../../services/swapi-service';
 import {
-  PeopleList, 
-  PlanetsList, 
+  PeopleList,
+  PlanetsList,
   StarshipsList,
-  PersonDetails, 
-  PlanetDetails, 
+  PersonDetails,
+  PlanetDetails,
   StarshipDetails
 } from '../sw-components';
 
@@ -68,32 +68,17 @@ export default class App extends Component {
 
         {/* <PeoplePage /> */}
 
-        <PersonDetails itemId = {11}/>
+        <PersonDetails itemId={11} />
 
-        <PlanetDetails itemId = {5}/>
+        <PlanetDetails itemId={5} />
 
-        <StarshipDetails itemId = {10}/>
+        <StarshipDetails itemId={10} />
 
-        <PeopleList
-        onPersonClick={this.onPersonClick}>
+        <PeopleList onPersonClick={this.onPersonClick} />
 
-        {(i) => `${i.name} (${i.gender})`}
+        <PlanetsList onPersonClick={this.onPersonClick} />
 
-      </PeopleList>
-
-      <PlanetsList
-        onPersonClick={this.onPersonClick}>
-
-        {(i) => `${i.name} (${i.gender})`}
-
-      </PlanetsList>
-
-      <StarshipsList
-        onPersonClick={this.onPersonClick}>
-
-        {(i) => `${i.name} (${i.gender})`}
-
-      </StarshipsList>
+        <StarshipsList onPersonClick={this.onPersonClick} />
 
       </div>
     )

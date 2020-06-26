@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Loader from '../loader';
 import ErrorMessage from '../error';
 
-const hasData = (View, getData) => {
+const withData = (View, getData) => {
   return class extends Component {
     constructor() {
       super();
@@ -40,4 +40,4 @@ const hasData = (View, getData) => {
   };
 };
 
-export default hasData;
+export default withData;

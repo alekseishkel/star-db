@@ -4,7 +4,7 @@ import ItemList from '../item-list';
 import ItemDetails from '../item-details';
 import { ItemField } from '../item-details/item-details';
 import Row from '../row';
-import hasData from '../item-list';
+import withData from '../item-list';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
 
