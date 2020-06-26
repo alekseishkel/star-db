@@ -7,6 +7,8 @@ import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
 import Row from '../row';
 import SwapiService from '../../services/swapi-service';
+import { SwapiServiceProvider } from '../swapi-service-context';
+import ErrorBoundry from '../error-boundry';
 import {
   PeopleList,
   PlanetsList,
@@ -53,34 +55,38 @@ export default class App extends Component {
     const planet = showRandomPlanet ? <RandomPlanet /> : null;
 
     return (
-      <div className="star-db">
-        <Header />
-        {planet}
+      <ErrorBoundry>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="star-db">
+            <Header />
+            {planet}
 
-        <div className="row mb2 button-row">
-          <button
-            className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet} >
-            Toggle Random Planet
+            <div className="row mb2 button-row">
+              <button
+                className="toggle-planet btn btn-warning btn-lg"
+                onClick={this.toggleRandomPlanet} >
+                Toggle Random Planet
             </button>
-          <ErrorButton />
-        </div>
+              <ErrorButton />
+            </div>
 
-        {/* <PeoplePage /> */}
+            {/* <PeoplePage /> */}
 
-        <PersonDetails itemId={11} />
+            <PersonDetails itemId={11} />
 
-        <PlanetDetails itemId={5} />
+            <PlanetDetails itemId={5} />
 
-        <StarshipDetails itemId={10} />
+            <StarshipDetails itemId={10} />
 
-        <PeopleList onPersonClick={this.onPersonClick} />
+            <PeopleList onPersonClick={this.onPersonClick} />
 
-        <PlanetsList onPersonClick={this.onPersonClick} />
+            <PlanetsList onPersonClick={this.onPersonClick} />
 
-        <StarshipsList onPersonClick={this.onPersonClick} />
+            <StarshipsList onPersonClick={this.onPersonClick} />
 
-      </div>
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoundry>
     )
   }
 };
