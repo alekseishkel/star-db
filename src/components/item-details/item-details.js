@@ -84,7 +84,7 @@ export default class ItemDetails extends Component {
 };
 
 const ItemView = ({ item, url, children }) => {
-  const { name, gender, birthYear, eyeColor } = item;
+  const { name } = item;
 
   return (
     <div className="person-details card">

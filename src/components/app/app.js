@@ -5,10 +5,16 @@ import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
-import ItemDetails from '../item-details/';
-import { ItemField } from '../item-details/item-details';
 import Row from '../row';
 import SwapiService from '../../services/swapi-service';
+import {
+  PeopleList, 
+  PlanetsList, 
+  StarshipsList,
+  PersonDetails, 
+  PlanetDetails, 
+  StarshipDetails
+} from '../sw-components';
 
 import './app.css';
 
@@ -43,34 +49,8 @@ export default class App extends Component {
     }
 
     const { showRandomPlanet } = this.state;
-    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
 
     const planet = showRandomPlanet ? <RandomPlanet /> : null;
-
-    const personDetails = (
-      <ItemDetails
-        itemId={11}
-        getData={getPerson}
-        getImageUrl={getPersonImage}>
-
-        <ItemField field="gender" label="Gender" />
-        <ItemField field="eyeColor" label="Eye Color" />
-
-      </ItemDetails>
-    )
-
-    const starshipDetails = (
-      <ItemDetails
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={getStarshipImage}>
-
-        <ItemField field="model" label="Model" />
-        <ItemField field="length" label="Length" />
-        <ItemField field="costInCredits" label="Cost" />
-
-      </ItemDetails>
-    )
 
     return (
       <div className="star-db">
@@ -86,9 +66,34 @@ export default class App extends Component {
           <ErrorButton />
         </div>
 
-        <PeoplePage />
+        {/* <PeoplePage /> */}
 
-        <Row left={personDetails} right={starshipDetails} />
+        <PersonDetails itemId = {11}/>
+
+        <PlanetDetails itemId = {5}/>
+
+        <StarshipDetails itemId = {10}/>
+
+        <PeopleList
+        onPersonClick={this.onPersonClick}>
+
+        {(i) => `${i.name} (${i.gender})`}
+
+      </PeopleList>
+
+      <PlanetsList
+        onPersonClick={this.onPersonClick}>
+
+        {(i) => `${i.name} (${i.gender})`}
+
+      </PlanetsList>
+
+      <StarshipsList
+        onPersonClick={this.onPersonClick}>
+
+        {(i) => `${i.name} (${i.gender})`}
+
+      </StarshipsList>
 
       </div>
     )
