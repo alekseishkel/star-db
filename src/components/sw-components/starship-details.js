@@ -4,14 +4,9 @@ import ItemDetails from '../item-details';
 import { ItemField } from '../item-details/item-details';
 import withSwapiService from '../hoc-helpers/with-swapi-service';
 
-const StarshipDetails = ({ itemId, swapiService }) => {
-  const { getStarship, getStarshipImage } = swapiService;
-
+const StarshipDetails = (props) => {
   return (
-    <ItemDetails
-      itemId={itemId}
-      getData={getStarship}
-      getImageUrl={getStarshipImage}>
+    <ItemDetails {...props}>
 
       <ItemField field="model" label="Model" />
       <ItemField field="length" label="Length" />
@@ -21,4 +16,11 @@ const StarshipDetails = ({ itemId, swapiService }) => {
   )
 };
 
-export default withSwapiService(StarshipDetails);
+const mapMethodsToProps = (swapiService) => {
+  return {
+    getData: swapiService.getStarship,
+    getImageUrl: swapiService.getStarshipImage
+  }
+};
+
+export default withSwapiService(StarshipDetails, mapMethodsToProps);

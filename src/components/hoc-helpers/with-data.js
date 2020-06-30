@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Loader from '../loader';
 import ErrorMessage from '../error';
 
-const withData = (View, getData) => {
+const withData = (View) => {
   return class extends Component {
     constructor() {
       super();
@@ -15,7 +15,8 @@ const withData = (View, getData) => {
     };
 
     componentDidMount() {
-      getData()
+
+      this.props.getData()
         .then((data) => this.setState({
           data
         }))
