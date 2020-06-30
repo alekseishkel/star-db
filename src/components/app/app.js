@@ -7,6 +7,7 @@ import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
 import Row from '../row';
 import SwapiService from '../../services/swapi-service';
+import DummyService from '../../services/dummy-swapi-service'
 import { SwapiServiceProvider } from '../swapi-service-context';
 import ErrorBoundry from '../error-boundry';
 import {
@@ -24,13 +25,24 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.swapiService = new SwapiService();
-
     this.state = {
       showRandomPlanet: true,
       selectedPerson: 1,
-      hasError: false
+      hasError: false,
+      swapiService: new DummyService()
     };
+
+    this.onServiceChange = () => {
+      this.setState(({swapiService}) => {
+        const Service =  swapiService instanceof SwapiService ? DummyService : SwapiService;
+
+        console.log(Service.name)
+
+        return {
+          swapiService: new Service()
+        }
+      })
+    }
 
     this.toggleRandomPlanet = () => {
       this.setState((state) => {
@@ -56,9 +68,9 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className="star-db">
-            <Header />
+            <Header onServiceChange={this.onServiceChange} />
             {planet}
 
             <div className="row mb2 button-row">
