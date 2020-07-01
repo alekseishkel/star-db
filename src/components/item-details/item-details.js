@@ -36,6 +36,8 @@ export default class ItemDetails extends Component {
     this.updateItem();
   };
 
+  //откуда зис пропс?
+
   componentDidUpdate(prevProps) {
     if (this.props.itemId !== prevProps.itemId,
         this.props.getData !== prevProps.getData,
