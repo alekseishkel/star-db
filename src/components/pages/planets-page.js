@@ -13,6 +13,7 @@ export default class PlanetsePage extends Component {
   }
 
   onItemClick = (selectedItem) => {
+    console.log(this.state)
     this.setState({
       selectedItem
     })

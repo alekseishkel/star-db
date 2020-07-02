@@ -13,6 +13,7 @@ export default class StarshipsPage extends Component {
   }
 
   onItemClick = (selectedItem) => {
+    console.log(selectedItem)
     this.setState({
       selectedItem
     })
@@ -20,7 +21,6 @@ export default class StarshipsPage extends Component {
 
   render() {
     const { selectedItem } = this.state;
-
     return (
       <Row 
         left={<StarshipsList onItemClick={this.onItemClick} />} 

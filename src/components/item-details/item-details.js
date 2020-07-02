@@ -36,11 +36,9 @@ export default class ItemDetails extends Component {
     this.updateItem();
   };
 
-  //откуда зис пропс?
-
   componentDidUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId,
-        this.props.getData !== prevProps.getData,
+    if (this.props.itemId !== prevProps.itemId ||
+        this.props.getData !== prevProps.getData ||
         this.props.getImageUrl !== prevProps.getImageUrl) {
       this.setState({
         loading: true
@@ -51,7 +49,7 @@ export default class ItemDetails extends Component {
 
   updateItem() {
     const { itemId, getData, getImageUrl } = this.props;
-
+    console.log(itemId)
     if (!itemId) {
       return;
     }
