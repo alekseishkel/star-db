@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader';
@@ -75,15 +76,7 @@ RandomPlanet.defaultProps = {
 };
 
 RandomPlanet.propTypes = {
-  updateInterval: (props, propName, componentName) => {
-    const value = props[propName];
-
-    if (typeof value === 'number' && !isNaN(value)) {
-      return null;
-    }
-
-    return new TypeError(`${componentName}: ${propName} must be number`);
-  }
+  updateInterval: PropTypes.number
 };
 
 const PlanetView = ({planet}) => {
