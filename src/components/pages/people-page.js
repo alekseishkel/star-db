@@ -20,7 +20,7 @@ export default class PeoplePage extends Component {
 
   render() {
     const { selectedItem } = this.state;
-//откуда берется айтем клик и айтем айди + не работает переключение
+
     return (
       <Row 
         left={<PeopleList onItemClick={this.onItemClick} />} 
