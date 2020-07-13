@@ -5,7 +5,7 @@ import Row from '../row';
 import { PeopleList, PersonDetails } from '../sw-components';
 
 const PeoplePage = ({ history, match }) => {
-    const { id } = match.params;
+    const { id=1 } = match.params;
 
     return (
       <Row 
