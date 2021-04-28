@@ -94,4 +94,4 @@ export default class SwapiService {
       cargoCapacity: starship.cargo_capacity
     }
   };
-}
+};

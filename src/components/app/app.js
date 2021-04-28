@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ErrorButton from '../error-button';
 import ErrorMessage from '../error';
 import SwapiService from '../../services/swapi-service';
 import DummyService from '../../services/dummy-swapi-service'
